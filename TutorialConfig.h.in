@@ -1,2 +1,5 @@
 #define Tutorial_VERSION_MAJOR @Tutorial_VERSION_MAJOR@
 #define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@
+
+// Project_binary_dir @Pbd
+// Project_source_dir @Psd
