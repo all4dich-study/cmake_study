@@ -1,5 +1,9 @@
-cmake_minimum_required (VERSION 2.6)
+dmake_minimum_required (VERSION 2.6)
 project (Tutorial)
+
+# Should we use our own math functions?
+
+option (USE_MYMATH "Use tutorial provided math implementation" ON)
 
 # The Version numbver
 set (Tutorial_VERSION_MAJOR 1)
@@ -17,4 +21,17 @@ configure_file (
 # so that we will find TutorialConfig.h 
 include_directories("${PROJECT_BINARY_DIR}")
 
+add_library(MathFunctions mysqrt.cxx)
+include_directories
+
+
+# Add the Mathfunctions library
+if (USE_MYMATH)
+    include_directories ("${PROJECT_SOURCE_DIR}/MathFunctions")
+    add_subdirectory ("MathFunctions")
+    set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
+endif
+
+# Add the executable
 add_executable(Tutorial tutorial.cxx)
+target_link_libraries(Tutorial ${EXTRA_LIBS})
