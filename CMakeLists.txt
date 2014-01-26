@@ -1,4 +1,4 @@
-dmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 2.6)
 project (Tutorial)
 
 # Should we use our own math functions?
@@ -22,15 +22,14 @@ configure_file (
 include_directories("${PROJECT_BINARY_DIR}")
 
 add_library(MathFunctions mysqrt.cxx)
-include_directories
 
 
 # Add the Mathfunctions library
 if (USE_MYMATH)
     include_directories ("${PROJECT_SOURCE_DIR}/MathFunctions")
-    add_subdirectory ("MathFunctions")
+    #add_subdirectory ("MathFunctions")
     set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
-endif
+endif (USE_MYMATH)
 
 # Add the executable
 add_executable(Tutorial tutorial.cxx)
