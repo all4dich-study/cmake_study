@@ -21,13 +21,11 @@ configure_file (
 # so that we will find TutorialConfig.h 
 include_directories("${PROJECT_BINARY_DIR}")
 
-add_library(MathFunctions mysqrt.cxx)
-
 
 # Add the Mathfunctions library
 if (USE_MYMATH)
     include_directories ("${PROJECT_SOURCE_DIR}/MathFunctions")
-    #add_subdirectory ("MathFunctions")
+    add_subdirectory ("MathFunctions")
     set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
 endif (USE_MYMATH)
 
